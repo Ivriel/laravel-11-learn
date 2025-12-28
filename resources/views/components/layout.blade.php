@@ -13,6 +13,7 @@
 <body class="font-sans h-full">
 
  <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 
 <div class="min-h-full">
   <x-navbar></x-navbar>

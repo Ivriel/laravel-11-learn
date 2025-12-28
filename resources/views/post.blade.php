@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
 
-    <article class="py-8 mx-w-screen-md">
+    {{-- <article class="py-8 mx-w-screen-md">
 
         <h2 class="mb-1 text-3xl tracking-tight font-bold text-gray-900">{{ $post['title'] }}</h2>
    
@@ -13,6 +13,46 @@
             {{$post['body'] }}
         </p>
         <a href="/posts" class="font-medium text-blue-500 hover:underline">&laquo;Back to posts</a>
-    </article>
+    </article> --}}
+
+    <!-- 
+Install the "flowbite-typography" NPM package to apply styles and format the article content: 
+
+URL: https://flowbite.com/docs/components/typography/ 
+-->
+
+<main class="pt-8 pb-16 lg:pt-16 lg:pb-24  dark:bg-gray-900 antialiased">
+  <div class="flex justify-between px-4 mx-auto max-w-4xl ">
+      <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+          <header class="mb-4 lg:mb-6 not-format">
+            <a href="/posts" class="font-medium text-xs text-blue-600 hover:underline">&laquo; Back to all posts</a>
+              <address class="flex items-center my-6 not-italic">
+                  <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
+                      <img class="mr-4 w-16 h-16 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-2.jpg" alt="{{ $post->author->name }}">
+                      <div>
+                          <a href="/authors/{{ $post->author->username }}" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">{{ $post->author->name }}</a>
+                          <p class="text-base text-gray-500 dark:text-gray-400">{{ $post->created_at->diffForHumans() }}</p>
+                            <a href="/categories/{{ $post->category->slug }}">
+                            <span
+                                class="
+                                @if($post->category->color == 'red') bg-red-100 text-red-800 dark:bg-red-200 dark:text-red-800
+                                @elseif($post->category->color == 'green') bg-green-100 text-green-800 dark:bg-green-200 dark:text-green-800
+                                @elseif($post->category->color == 'blue') bg-blue-100 text-blue-800 dark:bg-blue-200 dark:text-blue-800
+                                @elseif($post->category->color == 'yellow') bg-yellow-100 text-yellow-800 dark:bg-yellow-200 dark:text-yellow-800
+                                @else bg-gray-100 text-gray-800 dark:bg-gray-200 dark:text-gray-800
+                                @endif
+                                text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded">
+                               {{ $post->category->name }}
+                            </span>
+                        </a>
+                      </div>
+                  </div>
+              </address>
+              <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">{{ $post->title }}</h1>
+          </header>
+          <p>{{$post->body}}</p>
+       </article>
+       </div>
+       </main>
 
 </x-layout>
